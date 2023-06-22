@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tables</title>
+    <style>
+        body {
+            background-color: brown;
+        }
+        a {
+            width: 80px;
+            background-color: red;
+            padding: 3px;
+            text-decoration: line-through;
+            color: #000000;
+            border: 1px solid #333;
+        }
+        li {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li>
+            <a href="#">Книги</a>
+            <ul class="submenu">
+                <li><a href="#">Отечественные</a></li>
+                <li><a href="#">Зарубежные</a>
+                    <ul class="submenu">
+                        <li><a href="#">Детективы</a></li>
+                        <li><a href="#">Научная фантастика</a></li>
+                        <li><a href="#">Исторические</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#">DVD</a>
+            <ul class="submenu">
+                <li><a href="#">Отечественные</a>
+                    <ul class="submenu">
+                        <li><a href="#">Детективы</a></li>
+                        <li><a href="#">Научная фантастика</a></li>
+                        <li><a href="#">Исторические</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Зарубежные</a></li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menu = document.getElementById('menu');
+
+            menu.addEventListener('click', function (e) {
+                let target = e.target;
+                let submenu = target.nextElementSibling;
+
+                if (submenu && submenu.classList.contains('submenu')) {
+                    e.preventDefault();
+                    toggleSubMenu(submenu);
+                } else {
+                    alert('Вы можете перейти по ссылке: ' + target.getAttribute('href'));
+                }
+            });
+        });
+
+        function toggleSubMenu(submenu) {
+            if (submenu.style.display === 'block') {
+                submenu.style.display = 'none';
+            } else {
+                submenu.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
